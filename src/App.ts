@@ -1,20 +1,16 @@
 import $ from "jquery";
 // @ts-ignore
 import App from './App.svelte';
+import todolist from "./store/Todolist";
 import "./App.scss";
 const url = "http://localhost:3000/tasks";
 let app
-interface Data {
-	id:number,
-	status:any[],
-	type:string,
-	task:string,
-	 data:string
-}
 $(($:any)=>{
-	const getDate:{} =  (order=false) => $.ajax({url: `${url}${order? "?_sort=data":""}`})
-	const deletDate:{} = (i:number) =>$.ajax({url:`${url}/${i}`,method:"DELETE"})
-	const addDate:{} = (e:Data) => $.ajax({
+	const getDate:()=>{done:any} =  (order=false) => $.ajax({url: `${url}${order? "?_sort=data":""}`})
+	.done((a:any) => todolist.set(a));
+	const deletDate:(i:number)=>{done:any} = (i) =>$.ajax({url:`${url}/${i}`,method:"DELETE"})
+	.done(()=>getDate());
+	const addDate:(e:Data)=>{done:any} = (e) => $.ajax({
 		type:"POST",
 		url:url,
 		data:{
@@ -26,7 +22,7 @@ $(($:any)=>{
 		},
 		dataType:"json",
 		traditional:true
-	}).done((e:any) => console.log(e))
+	}).done(()=>getDate());
 	app = new App({
 		target: document.body,
 		props: {

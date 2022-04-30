@@ -35,16 +35,6 @@
         "Important",
         "immediate"
       ],
-      "type": "person",
-      "task": "shower",
-      "data": "2021-04-21",
-      "id": "1650795538555"
-    },
-    {
-      "status": [
-        "Important",
-        "immediate"
-      ],
       "type": "job",
       "task": "data entry",
       "data": "2022-02-25",
@@ -59,6 +49,23 @@
       "task": "report month of lord international  ",
       "data": "2022-05-05",
       "id": "1650816381189"
+    },
+    {
+      "status": [
+        "Important",
+        "notUrgent"
+      ],
+      "type": "person",
+      "task": "learn",
+      "data": "2001-05-21",
+      "id": "1651235546193"
+    },
+    {
+      "status": "Important",
+      "type": "home",
+      "task": "eat",
+      "data": "2022-05-21",
+      "id": "1651242754535"
     }
   ]
 }
